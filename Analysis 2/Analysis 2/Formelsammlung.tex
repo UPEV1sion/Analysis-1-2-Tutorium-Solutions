@@ -1,0 +1,148 @@
+\documentclass[a4paper, ngerman, 11pt]{scrarticle}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel, lmodern, amsmath, amsfonts, graphicx, amssymb, mathrsfs, siunitx}
+
+\begin{document}
+	\title{Analysis 2 Formelsammlung}
+	\author{Emanuel Schäffer}
+	\maketitle
+	
+	\section*{Differentialgleichungen}
+	Differentialgleichungen welche nicht auf dem Gesetz von Torricelli basieren:
+	
+	\subsection*{Aquarium}
+	In einem Meerwasseraquarium von $V_0 = 2700\si{\litre}$ und erwünschten Salzgehalt von $3.5\%$ wird versehentlich Salzwasser eingefüllt (Salzgehalt 0\%). Im Aquarium befinden sich kostbare Fische, die bei $0\%$ Salzgehalt sterben werden.
+	\\
+	
+	\noindent
+	Lösungsalternativen: 
+	
+	a) Transport ins Notbecken $\rightarrow 50 \%$ Verlust.
+	
+	b) Meerwasser zu pumpen: Pumpleistung beträgt $18\si{\l\per\min}$. Durch Überfluss fließt die gleiche Menge Wasser ab. Solange nicht ein Salzgehalt von $2\%$ erreicht ist, stirbt alle 3 Minuten ein Fisch.
+	
+	c) Ablassen \& neu füllen
+	
+	Zu b):
+	
+	Neue Salzmenge = Alte Salzmenge - Verlust + Zuwachs
+	
+	$$S(t + \Delta t) = S(t) - \frac{1}{150}S(t) \Delta t + 0.63\Delta t$$
+	\\
+	
+	Mit Verlust: $\frac{18\si{\kilogram}}{min}\cdot\frac{S(t)}{2700}\Delta t$ und Zuwachs: $18\si{\l\per\min} \cdot 0.035 \cdot \Delta t$
+	\\
+	\begin{align*}
+		S(t + \Delta t) &= S(t) - \frac{1}{150}S(t) \Delta t + 0.63\Delta t \quad \vert -S(t) :\Delta t &&\\
+		S^\prime(t) &=  - \frac{1}{150}S(t) + 0.63\\
+		\frac{dS}{dt} &=  - \frac{1}{150}S(t) + 0.63 \qquad a = 0.63, b = -\frac{1}{150}\\
+		\frac{dS}{dt} &= a + b\cdot S(t) \quad \vert \cdot dt \cdot \frac{1}{a + b\cdot S(t)} \int\\
+		\int \frac{1}{a + b\cdot S(t)} dS &= \int 1 dt\\
+		\Rightarrow \frac{1}{b} \ln(a+bS) &= t + C \quad \vert \cdot b\\
+		\ln(a+bS) &= bt + \bar{C} \quad \vert e^\square\\
+		a+bS &= e^{bt}\cdot \bar{C} \quad \vert -a :b\\
+		\Rightarrow S(t) &= \frac{e^{bt}\cdot \bar{C}-a}{b}\\
+		S(t) &= (e^{-\frac{1}{150}t}\cdot \bar{C}-0.63) (-150)\\
+		S(0) &= (\bar{C}-0.63)(-150)\\
+		&= -150\bar{C}+94.5\\
+		&=\bar{C} = 0.63\\
+		\Rightarrow S(t) &= \frac{a}{b} e^{bt} - \frac{a}{b}
+		S(t) = -94.5(e ^{-\frac{1}{150}t}-1)
+	\end{align*}
+
+	Frage:
+	Wann sind 2\% Salzgehalt erreicht?
+	\begin{align*}
+		54 &= 94.5(1- e ^{-\frac{1}{150}t})\\
+		t &= 127.095\min\\
+		127/3  &= 42.3  \text{ Fische tot}
+	\end{align*}	
+
+	\subsection*{Tank}
+	In einem Tank werden pro Minute 6\% des Inhaltes abgelassen und 60$\si{\l\per\min}$. eingelassen.
+	
+	Neuer Füllstand = Alter Füllstand - Verlust + Zuwachs
+	
+	$$w(t+\Delta t) = w(t) - 0.06w(t)\Delta t + 90 \Delta t$$
+	
+	\begin{align*}
+		w(t+\Delta t) &= w(t) - 0.06w(t)\Delta t + 90 \Delta t \quad \vert -w(t) : \Delta t\\
+		\frac{dw}{dt} &= - 0.06w(t) + 90 \quad \vert \frac{1}{- 0.06w(t) + 90} \cdot dt \int\\
+		\int\frac{1}{- 0.06w(t) + 90} dw &= \int1 dt\\
+		-\frac{100}{6} \ln(- 0.06w(t) + 90) &= t + C \quad \vert \cdot -\frac{6}{100} e^\square\\
+		- 0.06w(t) + 90 &= e^{-\frac{6}{100}t} \cdot \bar{C} \quad \vert -90 \cdot \frac{1}{-0.06}\\
+		w(t) &= 1500 -\frac{1}{0.06}e^{-\frac{6}{100}t} \cdot \bar{C} \\
+		w(0) &= 1500 - \frac{1}{0.06}\bar{C} = 400\\
+		\bar{C} &= 66\\
+		w(t) &= 1500 - 1100e^{-\frac{6}{100}t}
+	\end{align*}
+	
+	
+	\subsection*{Chemielabor Tank}
+	Ein Tank im Chemielabor enthält 1000~l Wasser, in dem anfänglich 50~kg Salz gelöst sind. Pro Minute werden kontinuierlich 10~Liter Salzlösung entnommen und 10 Liter Wasser mit einem Salzgehalt von 2~kg zugeführt. (Es wird vorausgesetzt, dass die Salzverteilung im Tank stets homogen ist). Wie viel Salz befindet sich nach 1 Stunde im Tank?
+	\\
+	
+	Neue Salzmenge = Alte Salzmenge + Zuwachs - Abfluss
+	
+	$$S(t + \Delta t) = S(t) + 2\Delta t - \frac{S(t)\cdot 10}{1000} \Delta t$$
+	
+	\begin{align*}
+		S(t + \Delta t) &= S(t) + 2\Delta t - \frac{S(t)\cdot 10}{1000} \Delta t \quad \vert -S(t) : \Delta t\\
+		\frac{dS}{dt} &= 2 - 0.01 S(t) \quad \vert \frac{1}{ 2 - 0.01 S(t)} \cdot dt \int\\
+		\frac{1}{ 2 - 0.01 S(t)} dS &= 1 dt\\
+		\ln(2 - 0.01 S(t)) (-100) &= t + C \quad \vert :-100\\
+		\ln(2 - 0.01 S(t))&= -0.01t + \bar{C} \quad \vert e^\square\\
+		2 - 0.01 S(t)&= e^{-0.01t}\bar{C} \quad \vert -2 : -0.01\\
+		S(t)&= 200 - e^{-0.01t}\bar{C}\\
+		S(0)&= 200 - \bar{C} = 50 \quad \vert -200 \cdot(-1)\\
+		S(0)&=\bar{C} = 150\\
+		S(t)&= 200 - 150e^{-0.01t}\\
+		S(60)&= 200 - 150e^{-0.01\cdot 60} = 117.67\si{\kilogram}
+	\end{align*}
+
+	\subsection*{Cäsium}
+	
+	Für Forschungszwecke wird 10g radioaktives Material Cäsium 137 beschafft. Es hat eine Halbwertszeit von 30 Jahre
+	\\
+	
+	\textbf{a(3)} Stellen Sie die zur obigen Aufgabenstellung zugehörige Differentialgleichung auf.
+	
+	\textbf{b(3)} Lösen Sie die gefundene Differentialgleichung unter Berücksichtigung der gegebenen Anfangsbedingungen.
+	
+	\textbf{c(3)} Bestimmen Sie aus der Halbwertszeit die Zerfallskonstante k und geben Sie das Zerfallsgesetz für Cäsium 137 
+	
+	\textbf{d(3)} Wie viel Cäsium ist nach 100 Jahren zerfallen (zur Kontrolle k = 0.0231)
+	
+	\textbf{e(3)} Nach welcher Zeit ist noch 30\% der ursprünglichen Aktivität messbar?
+	\\
+	
+	Neue Masse = Alte Masse - Verlust
+	\\
+	
+	und für den Verlust gilt:
+	
+	Der Verlust ist proportional zur aktuellen vorhandenen Masse und zur Zerfallskonstanten k und zur vergangenen Zeit.
+	
+	$$C(t \Delta t) = C(t) - C(t)\cdot k \cdot \Delta t$$
+	
+	
+	\begin{align*}
+		C(t \Delta t) &= C(t) - C(t)\cdot k \cdot \Delta t \quad  \vert - C(t) : \Delta t\\
+		\frac{dC}{dt} &= - C(t)\cdot k \quad \vert \frac{1}{C} \cdot dt \int\\
+		\int \frac{1}{C} dC&= -k \int dt\\
+		\ln(C) &= -kt + Konst \quad \vert e^\square\\
+		C(t) &= e^{-kt} Konstz\\
+		C(0) &= Konstz = 10\\
+		C(t) &= 10e^{-kt}\\
+		C(30) &= 10e^{-k30} = 5 \quad \vert :10\\
+		e^{-k30} &= \frac{1}{2} \quad \vert \ln\\
+		-k30 &= \ln(\frac{1}{2}) \quad \vert :-30\\
+		& k = \frac{\ln(\frac{1}{2})}{-30} = 0.023104 \\
+		C(t) &= 10e^{-0.023104t}\\
+		C(100) &= 10e^{-0.023104\cdot 100} = 0.9922\\
+		C(t) &= 10e^{-0.023104t} = 3\\
+		t &= \frac{\ln(0.3)}{-0.023104} = 52.11\text{ Jahre}\\
+	\end{align*}
+	 
+\end{document}

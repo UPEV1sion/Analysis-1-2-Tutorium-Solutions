@@ -1,0 +1,136 @@
+\documentclass[a4paper, ngerman]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel, lmodern, amsmath, amsfonts, graphicx, amssymb, mathrsfs}
+
+\begin{document}
+	\title{Lösungen für Übungsaufgaben Analysis 1 für den 21.06.24}
+	\author{Emanuel Schäffer}
+	\maketitle
+	\section*{Aufgabe 1}
+	\quad $x_1 = -3.17663$
+	
+	$x_2 = -2.58052$
+	
+	$x_3 = 0.32205$    
+	
+	$x_4 = 2.28381$    
+	
+	$x_5 = -3.15127$    
+	
+	\section*{Aufgabe 3}
+	\begin{align*}
+		\varphi(x) &= \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\\
+		\text{mit }a &= \frac{1}{\sqrt{2\pi}\sigma} \text{ und } b = \frac{1}{2\sigma^2}\\
+		\varphi(x) &= a \cdot e^{-b(x-\mu)^2}\\
+		\varphi^\prime(x) &= -2ab \left(x - {\mu}\right) \mathrm{e}^{-b \left(x - {\mu}\right)^{2}}\\
+		\varphi^{\prime\prime}(x) &= -2ab\left[1-2b(x-\mu)^2\right]e^{-b(x-\mu)^2}\\
+		\varphi^{\prime\prime\prime}(x) &= -4 a b^2 e^{-b (x - \mu)^2} (-3 + 2 b (x - \mu)^2) (x - \mu)
+	\end{align*}
+
+	\section*{Aufgabe 4}
+	\begin{align*}
+		f(x) &= \ln(\cos x)\\
+		f^\prime(x) &= -\frac{\sin\left(x\right)}{\cos\left(x\right)}\\
+		f^{\prime\prime}(x) &= -\frac{\sin^{2}\left(x\right)}{\cos^{2}\left(x\right)} - 1\\
+		f^{\prime\prime\prime}(x) &= -\frac{2 \sin\left(x\right) \left(\sin^{2}\left(x\right) + \cos^{2}\left(x\right)\right)}{\cos^{3}\left(x\right)}
+	\end{align*}
+
+	\section*{Aufgabe 5}
+	\quad $a^{x+y} = (x+y)\ln(a) = e^{x\ln(x)+y\ln(y)} = e^{x\ln(x)} e^{y\ln(y)} = a^xa^y$
+	
+	\section*{Aufgabe 6}
+	SS. 40 Skript
+	\begin{align*}
+		\sin^2(\alpha) + \cos^2(\alpha) &= 1\\
+		\cos^2(\alpha) &= 1 - \sin^2(\alpha)\\
+		f(x) &= \arcsin(x)\\
+		\sin(f(x)) &= x\\
+		\cos(f(x)) \cdot f^\prime(x) &= 1\\
+		f^\prime(x) &= \frac{1}{\cos(\arcsin(x))}\\
+		f^\prime(x) &= \frac{1}{\sqrt{1-sin^2(\arcsin(x))}}\\
+		f^\prime(x) &= \frac{1}{\sqrt{1-x^2}}
+	\end{align*}
+	\newpage
+	\section*{Aufgabe 7}
+	\quad $f(x) = ae^x+\frac{b}{x}$
+	
+	$f^\prime(x) = ae^{x} - \frac{b}{x^{2}}$
+	
+	$f^{\prime\prime}(x) = e^{x} + \frac{2b}{x^{3}}$
+	\begin{align*}
+		f(x) &= ae^x+\frac{b}{x}\\
+		f(2) &= ae^2 + \frac{b}{2} = 10\\
+		a &= \frac{10}{e^2}-\frac{b}{2e^2}\\
+		& \fbox{$a = \frac{20-b}{2e^2}$}\\
+		f(3) &= \frac{20-b}{2e^2}e^3+\frac{b}{3} = 9\\
+		f(3) &= 10e-\frac{be}{2}+\frac{b}{3} = 9\\
+		f(3) &= \frac{-3be+2b}{6} = 9-10e\\
+		f(3) &= b\frac{(-3e+2)}{6} = 9-10e\\
+		& \fbox{$b = \frac{54-60e}{-3e+2}$}\\
+	\end{align*}
+
+	\section*{Aufgabe 8}
+	\begin{align*}
+		u\footnotemark &= e^{-x}\cos(x+\frac{\pi}{4}) &u^\prime&= -e^{-x}\cos(x+\frac{\pi}{4})-e^{-x}\sin(x+\frac{\pi}{4})\\
+		v &= x & v^\prime &= 1\\
+		\\
+		\footnotemark[1]:\\
+		u &=e^{-x} & u^\prime &= -e^{-x}\\
+		v &= \cos(x+\frac{\pi}{4}) & v^\prime &=-\sin(x+\frac{\pi}{4})\\
+	\end{align*}	
+		$$-e^{-x}\left[\frac{x\cos(x+\frac{\pi}{4}) + x\sin(x+\frac{\pi}{4}) + \cos(x+\frac{\pi}{4})}{x^2}\right]$$
+		
+		$$-e^{-x}\left[\frac{\cos(x+\frac{\pi}{4})(x+1)}{x^2}+\frac{\sin(x+\frac{\pi}{4})}{x}\right]$$
+		
+	\section*{Aufgabe 9}
+	\subsection*{a)}
+	\begin{align*}
+		&\lim_{x\rightarrow0}\frac{\log_{10}x}{\ln(\sin x)}\\
+		&\lim_{x\rightarrow0}\frac{\frac{\ln(x)}{\ln(10)}}{\ln(\sin x)}\\
+		&\lim_{x\rightarrow0}\frac{\ln(x)}{\ln(10)\ln(\sin x)} \quad \vert ^\prime\\
+		&\frac{1}{\ln(10)}\lim_{x\rightarrow0}\frac{\sin x}{x\cos x} \quad \vert ^\prime\\
+		&\frac{1}{\ln(10)}\lim_{x\rightarrow0}\frac{\cos x)}{\cos x + x\sin x} = 1\\
+		&\frac{1}{\ln(10)}
+	\end{align*}	
+	\subsection*{b)}
+	\begin{align*}
+		&\lim_{x\rightarrow0}\frac{e^x-5^x}{\sin x}\\
+		&\lim_{x\rightarrow0}\frac{e^x-e^{x\ln(5)}}{\sin x} \quad \vert ^\prime\\
+		&\lim_{x\rightarrow0}\frac{e^x-\ln(5)e^{x\ln(5)}}{\cos x}\\
+		&1-\ln(5)
+	\end{align*}
+
+	\section*{Aufgabe 10}
+	\quad $S(x) = 2(x^2+a^2)^\frac{1}{2}+b-x$
+	
+	$S^\prime(x) = \frac{2x}{\sqrt{x^{2} + a^{2}}} - 1$
+	
+	$S^{\prime\prime}(x) = \frac{2}{\sqrt{x^{2} + a^{2}}} - \frac{2x^{2}}{\left(x^{2} + a^{2}\right)^{\frac{3}{2}}}$
+	
+	\begin{align*}
+		\frac{2x}{\sqrt{x^{2} + a^{2}}} - 1 &= 0\\
+		\frac{4x^2}{x^{2} + a^{2}}  &= 1\\
+		4x^2  &= x^{2} + a^{2}\\
+		3x^2  &= a^{2}\\
+		x^2  &= \frac{1}{3}a^{2}\\
+		x  &= \pm\frac{1}{\sqrt{3}}a\\
+	\end{align*}
+
+	\section*{Aufgabe 11}
+	
+	\begin{align*}
+		&x=v_0\cdot t \quad \text{Geschw. * Zeit}\\
+		&H-h = \frac{1}{2}g\cdot t^2 \quad \text{Freier Fall}\\
+		&t^2 = \frac{2(H-h)}{g}\\
+		&t = \sqrt{\frac{2(H-h)}{g}}\\
+		&x = \sqrt{2gh}\cdot \sqrt{\frac{2(H-h)}{g}}\\
+		&x = \sqrt{4h(H-h)} \\
+		&4h(H-h) = 0 \quad \vert ^\prime\\
+		&4H-4h-4h = 0\\
+		&H-2h = 0\\
+		&h = \frac{H}{2}\\
+	\end{align*}
+	
+	
+\end{document}
