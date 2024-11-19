@@ -1,0 +1,24 @@
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{lmodern}
+\usepackage{mathtools, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{xparse}
+\pgfplotsset{width=10cm, compat=1.18}
+\usetikzlibrary{patterns}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\inflimit}{\lim\limits_{n\rightarrow\infty}}
+\DeclareDocumentCommand{\partder}{m o}{%
+	\IfValueTF{#2}{%
+		\frac{\partial #1}{\partial #2}%
+	}{%
+		\frac{\partial f}{\partial #1}%
+	}%
+}
