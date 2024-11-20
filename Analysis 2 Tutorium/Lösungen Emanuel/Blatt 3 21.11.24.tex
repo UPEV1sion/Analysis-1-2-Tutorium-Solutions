@@ -14,7 +14,7 @@
 	
 	\noindent Konvergiert also die Vektorfolge $(\vec{a}_n)_{n\in \mathbb{N}}$ gegen $\vec{a}$
 	dann gilt gemäß Definition:
-	\[\norm{\vec{a}_n - \vec{a}} < \varepsilon \quad \forall \quad n \ge \mathbb{N}(\varepsilon)\]
+	\[\norm{\vec{a}_n - \vec{a}} < \varepsilon \quad \forall \quad n \ge N(\varepsilon)\]
 	
 	also $\lim\limits_{n\rightarrow\infty} \vec{a}_n = \vec{a}$ beziehungsweise $\lim\limits_{n\rightarrow\infty} \norm{\vec{a}_n - \vec{a}} = 0$ 
 	
@@ -31,66 +31,66 @@
 	
 	\section*{Aufgabe 2}
 	\begin{samepage}
-	\begin{itemize}
-		\item[\textbf{a)}]In der industriellen Fertigung werden bei der Qualitätskontrolle Bauteile vermessen und die Werte $ x_1, \ldots, x_n $ ermittelt. Der Vektor $\vec{d} = \vec{x} - \vec{s}$ gibt die Abweichungen der Messungen zu den Sollwerten $s_1, \ldots, s_n$ an. Definieren Sie nun eine Norm auf $\mathbb{R}^n$ derart, daß $\vec{\norm{d}} < \varepsilon$ gdw. all Abweichungen vom Sollwert kleiner als eine gegebene Toleranz $\varepsilon$ sind.
-		\item[\textbf{b)}] Beweisen Sie, daß die in a) definierte Norm alle Axiome einer Norm erfüllt.
-	\end{itemize}	
+	\begin{enumerate}[\textbf{\alph*)}]
+		\item In der industriellen Fertigung werden bei der Qualitätskontrolle Bauteile vermessen und die Werte $ x_1, \ldots, x_n $ ermittelt. Der Vektor $\vec{d} = \vec{x} - \vec{s}$ gibt die Abweichungen der Messungen zu den Sollwerten $s_1, \ldots, s_n$ an. Definieren Sie nun eine Norm auf $\mathbb{R}^n$ derart, daß $\vec{\norm{d}} < \varepsilon$ gdw. alle Abweichungen vom Sollwert kleiner als eine gegebene Toleranz $\varepsilon$ sind.
+		\item Beweisen Sie, daß die in a) definierte Norm alle Axiome einer Norm erfüllt.
+	\end{enumerate}	
 	\end{samepage}
 	
 	\subsection*{Lösung Aufgabe 2}
 	
-	\begin{itemize}
-		\item[\textbf{a)}] Die in Frage kommende Abbildung ist die sogenannte Maximum-Norm:
+	\begin{enumerate}[\textbf{\alph*)}]
+		\item Die in Frage kommende Abbildung ist die sogenannte Maximum-Norm:
 		
 		$\norm{\vec{x}}_{max} \coloneqq \max(|x_1|, \dots, |x_n|)$
-		\item[\textbf{b)}] Die Abbildung $\norm{\quad}_{max}: \mathbb{R}^n \rightarrow \mathbb{R}$ ist eine Norm wegen:
-		\begin{enumerate}
+		\item Die Abbildung $\norm{\quad}_{max}: \mathbb{R}^n \rightarrow \mathbb{R}$ ist eine Norm wegen:
+		\begin{enumerate}[\arabic*.]
 			\item Aus $\norm{\vec{x}}_{max} = \max(|x_1|, \dots, |x_n|) = 0$ folgt $x_1 = x_2 = \ldots = x_n = 0$
 			\item Es gilt $\norm{\lambda \cdot \vec{x}}_{max} = \max(|\lambda \cdot x_1|, \dots, |\lambda \cdot x_n|) = |\lambda| \cdot \max(|x_1|, \dots, |x_n|) = |\lambda| \cdot \norm{\vec{x}}_{max} \forall \lambda \in \mathbb{R}, \vec{x} \in \mathbb{R}^n$ 
 			\item Es gilt $\norm{\vec{x} + \vec{y}}_{max} = \max(|x_1 + y_1|, \ldots, |x_n + y_n|) \le \max(|x_1| + |y_1|, \ldots, |x_n| + |y_n|) \le \max(|x_1|, \ldots, |x_n|) + \max(|y_1|, \ldots, |y_n|) = \norm{\vec{x}}_{max} + \norm{\vec{y}}_{max} \forall x, y \in \mathbb{R}^n$ Dreiecksungleichung
 		\end{enumerate}
-	\end{itemize}
+	\end{enumerate}
 	
 	
 	\section*{Aufgabe 3}
 	Berechnen Sie die partiellen Ableitungen $\frac{\partial f}{\partial x_1}$, $\frac{\partial f}{\partial x_2}$, $\frac{\partial f}{\partial x_1}$ folgender Funktionen $f: \mathbb{R}^3\rightarrow\mathbb{R}$
 		
-	\begin{itemize}
-		\item[\textbf{a)}] $ f(\vec{x}) = |\vec{x}| $
-		\item[\textbf{b)}] $ f(\vec{x}) = x_1^{x_2} + x_1^{x_3} $
-		\item[\textbf{c)}] $ f(\vec{x}) = x_1^{(x_2 + x_3)} $
-		\item[\textbf{d)}] $ f(\vec{x}) = \sin(x_1 + x_2) $
-		\item[\textbf{e)}] $ f(\vec{x}) = \sin(x_1 + a\cdot x_2) $
-	\end{itemize}
+	\begin{enumerate}[\textbf{\alph*)}]
+		\item $f(\vec{x}) = |\vec{x}|$
+		\item $f(\vec{x}) = x_1^{x_2} + x_1^{x_3}$
+		\item $f(\vec{x}) = x_1^{(x_2 + x_3)}$
+		\item $f(\vec{x}) = \sin(x_1 + x_2)$
+		\item $f(\vec{x}) = \sin(x_1 + a\cdot x_2)$
+	\end{enumerate}
 	
 	\subsection*{Lösung Aufgabe 3}
 	
-	\begin{itemize}
-		\item[\textbf{a)}] $f(\vec{x}) = |\vec{x}| = \sqrt{x_1^2 + x_2^2 + x_3^2}$\\
+	\begin{enumerate}[\textbf{\alph*)}]
+		\item $f(\vec{x}) = |\vec{x}| = \sqrt{x_1^2 + x_2^2 + x_3^2}$\\
 		$\partder{x_1} = \frac{1}{2} \cdot (x_1^2 + x_2^2 + x_3^2)^{-\frac{1}{2}}\cdot 2x_1 = \frac{x_1}{|\vec{x}|}$\\
 		$\partder{x_2} = \frac{x_2}{|\vec{x}|}$\\
 		$\partder{x_3} = \frac{x_3}{|\vec{x}|}$\\
 		
-		\item[\textbf{b)}] $ f(\vec{x}) = x_1^{x_2} + x_1^{x_3}  = e^{\ln(x_1^{x_2})} + e^{\ln(x_1^{x_3})} = e^{x_2 \cdot\ln(x_1)} + e^{x_3 \cdot \ln(x_1)} $\\
+		\item $ f(\vec{x}) = x_1^{x_2} + x_1^{x_3}  = e^{\ln(x_1^{x_2})} + e^{\ln(x_1^{x_3})} = e^{x_2 \cdot\ln(x_1)} + e^{x_3 \cdot \ln(x_1)} $\\
 		$\partder{x_1} = x_2 \cdot x_1^{x_2-1} + x_3\cdot x_1^{x_3-1}$\\
 		$\partder{x_2} = e^{x_2 \cdot \ln(x_1)} \cdot \ln(x_1) = x_1^{x_2}\cdot \ln(x_1)$\\
 		$\partder{x_3} = x_1^{x_3}\ln(x_1)$
 		
-		\item[\textbf{c)}] $ f(\vec{x}) = x_1^{(x_2 + x_3)} = x_1^{x_2} \cdot x_1^{x_3} = e^{x_2\ln(x_1)} \cdot e^{x_3\ln(x_1)} $\\
+		\item $ f(\vec{x}) = x_1^{(x_2 + x_3)} = x_1^{x_2} \cdot x_1^{x_3} = e^{x_2\ln(x_1)} \cdot e^{x_3\ln(x_1)} $\\
 		$\partder{x_1} = (x_2 + x_3)\cdot x_1^{(x_2 + x_3)-1}$\\
 		$\partder{x_2} = e^{x_2\ln(x_1)} \cdot e^{x_3\ln(x_1)} \cdot \ln(x_1) = x_1^{(x_2 + x_3)} \cdot \ln(x_1)$\\
 		$\partder{x_3} = x_1^{(x_2 + x_3)} \cdot \ln(x_1)$
 		
-		\item[\textbf{d)}] $f(\vec{x}) = \sin(x_1 + x_2)$\\
+		\item $f(\vec{x}) = \sin(x_1 + x_2)$\\
 		$\partder{x_2} = \cos(x_1 + x_2) \cdot 1$\\
 		$\partder{x_1} = \cos(x_1 + x_2) \cdot 1$\\
 		$\partder{x_3} = 0$
 		 
-		\item[\textbf{e)}] $f(\vec{x}) = \sin(x_1 + a\cdot x_2)$\\
+		\item $f(\vec{x}) = \sin(x_1 + a\cdot x_2)$\\
 		$\partder{x_1} = \cos(x_1 + a\cdot x_2) \cdot 1$\\
 		$\partder{x_2} = \cos(x_1 + a\cdot x_2) \cdot a$\\
 		$\partder{x_3} = 0$\\
-	\end{itemize}
+	\end{enumerate}
 	
 	\section*{Aufgabe 4}
 	Berechnen Sie die Ableitungsmatrix der Funktion $\vec{f}(x_1, x_2, x_3) = \begin{pmatrix}
