@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+	\foreach \i in {0, 3, 4} {
+		\begin{tikzpicture}
+			\begin{axis}[
+				title={$g(x,y) = x^\i+(x+y)^2$},
+				xlabel={$x$},
+				ylabel={$y$}, 
+				zlabel={$z$}
+				]
+				\addplot3[mesh] {x^\i+(x+y)^2};
+			\end{axis}
+		\end{tikzpicture}
+	}
+\end{document}
