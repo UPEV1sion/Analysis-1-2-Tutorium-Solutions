@@ -9,6 +9,7 @@
 \usepackage{xcolor}
 \usepackage{pgfplots}
 \usepackage{animate}
+\usepackage{float}
 \usepackage[shortlabels]{enumitem}
 \pgfplotsset{width=7cm, compat=1.18}
 \usetikzlibrary{patterns, positioning, shapes.geometric}
@@ -245,7 +246,17 @@
 		(Hinweis: Diese Aufgabe ist nicht ganz einfach. Betrachten Sie einen Kreis um den Nullpunkt und lassen Sie den den Radius des Kreises gegen Null  streben).
 		
 		\subsection*{Lösung Aufgabe 3}
-		
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}
+				\begin{axis}[
+					view={45}{70},
+%					axis lines=middle
+					]
+					\addplot3[surf, samples=75, domain=-3:3, y domain=-3:3] {(x*y^3) / (x^2 + y^6)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}
 		Gegeben sei ein Kreis um den Nullpunkt $(0,0)$ in $\mathbb{R}^2$ durch $(u,v)\in \mathbb{R}^2$ mit $u^2~+~v^2~=~1$ \\
 		Betrachte nun $f$ auf dem Kreis um den Nullpunkt mit dem Kreisradius $\rightarrow 0$
 		
