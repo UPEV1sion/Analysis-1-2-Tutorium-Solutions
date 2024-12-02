@@ -3,23 +3,22 @@
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{lmodern}
-\usepackage{lmodern}
 \usepackage{mathtools, amsfonts, amssymb}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{pgfplots}
-\usepackage{xparse}
 \usepackage[shortlabels]{enumitem}
 \pgfplotsset{width=10cm, compat=1.18}
 \usetikzlibrary{patterns}
 
+\setlength\parindent{0pt}
+
+\DeclareMathOperator{\Hessian}{Hess}
+
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\inflimit}{\lim\limits_{n\rightarrow\infty}}
-\DeclareDocumentCommand{\partder}{m o}{%
-	\IfValueTF{#2}{%
-		\frac{\partial #1}{\partial #2}%
-	}{%
-		\frac{\partial f}{\partial #1}%
-	}%
-}
+\newcommand{\partderf}[1]{\tfrac{\partial f}{\partial #1}}
+\newcommand{\partder}[2]{\tfrac{\partial #1}{\partial #2}}
+\newcommand{\zpartderf}[2]{\tfrac{\partial^2 f}{\partial #1 \partial #2}}
+\newcommand{\zpartder}[3]{\tfrac{\partial^2 #1}{\partial #2 \partial #3}}

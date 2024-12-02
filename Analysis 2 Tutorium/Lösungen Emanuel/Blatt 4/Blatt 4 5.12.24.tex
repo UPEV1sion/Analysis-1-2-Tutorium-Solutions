@@ -1,0 +1,269 @@
+\documentclass[ngerman, a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{mathtools, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{animate}
+\usepackage[shortlabels]{enumitem}
+\pgfplotsset{width=7cm, compat=1.18}
+\usetikzlibrary{patterns, positioning, shapes.geometric}
+
+\setlength\parindent{0pt}
+
+\DeclareMathOperator{\Hessian}{Hess}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\inflimit}{\lim\limits_{n\rightarrow\infty}}
+\newcommand{\partderf}[1]{\tfrac{\partial f}{\partial #1}}
+\newcommand{\partder}[2]{\tfrac{\partial #1}{\partial #2}}
+\newcommand{\zpartderf}[2]{\tfrac{\partial^2 f}{\partial #1 \partial #2}}
+\newcommand{\zpartder}[3]{\tfrac{\partial^2 #1}{\partial #2 \partial #3}}
+
+\begin{document}
+	\title{Lösungen der Übungsaufgaben Analysis 2 für den 5.12.24}
+	\author{Emanuel Schäffer}
+	\maketitle
+	
+	\section*{Aufgabe 1}
+	Untersuchen Sie folgende Funktionen auf Extrema und geben Sie an, ob es sich um ein lokales oder globales, bzw. ein isoliertes Extremum handelt:
+	
+	\begin{align*}
+		\textbf{a)} \quad f(x,y) &= x^3y^2(1-x-y)\\
+		\textbf{b)} \quad g(x,y) &= x^k+(x+y)^2 \qquad (k=0,3,4)
+	\end{align*}
+	
+	\subsection*{Lösung Aufgabe 1}
+	\begin{tikzpicture}
+		\begin{axis}[
+			title={$f(x,y) = x^3y^2(1-x-y)$},
+			xlabel={$x$},
+			ylabel={$y$}, 
+			zlabel={$z$}
+			]
+			\addplot3[mesh, domain=-10:10, samples=50] {x^3 * y^2 * (1-x-y)};
+		\end{axis}
+	\end{tikzpicture}
+	\animategraphics[loop, controls, width=7cm]{1}{frame-}{1}{3}
+	
+	\newpage
+	\begin{enumerate}[\textbf{\alph*)}]
+		\item 
+		$
+		f(x,y) = x^3y^2(1-x-y) = x^3y^2 - x^4y^2 - x^3y^3 \\
+		\partderf{x}(x,y) = 3x^2y^2 - 4x^3y^2 - 3x^2y^3 \\
+		\partderf{y}(x,y) = 2x^3y - 2x^4y - 3x^3y^2 \\
+		\zpartderf{x}{x}(x,y) = 6xy^2 - 12x^2y^2 - 6xy^3 \\
+		\zpartderf{y}{y} (x,y) = 2x^3 - 2x^4 - 6x^3y \\
+		\zpartderf{x}{y} (x,y) = 6x^2y - 8x^3y - 9x^2y^2 
+		$
+%	\textbf{a)}
+%	\begin{align*}
+%		f(x,y) &= x^3y^2(1-x-y) = x^3y^2 - x^4y^2 - x^3y^3 &&\\
+%		\partderf{x}(x,y) &= 3x^2y^2 - 4x^3y^2 - 3x^2y^3 &&\\
+%		\partderf{y}(x,y) &= 2x^3y - 2x^4y - 3x^3y^2 &&\\
+%		\zpartderf{x}{x}(x,y) &= 6xy^2 - 12x^2y^2 - 6xy^3 &&\\
+%		\zpartderf{y}{y} (x,y) &= 2x^3 - 2x^4 - 6x^3y &&\\
+%		\zpartderf{x}{y} (x,y) &= 6x^2y - 8x^3y - 9x^2y^2 &&
+%	\end{align*}
+
+		Notwendige Bedingung für ein Extremum ist, dass $\nabla f = 0$ also
+		
+		\begin{align*}
+			3x^2y^2 - 4x^3y^2 - 3x^2y^3 &= 0 = x^2y^2(3-4x-3y) \text{\quad und} &&\\
+			2x^3y - 2x^4y - 3x^3y^2 &= 0 = x^3y(2-2x-3y)&&
+		\end{align*}
+		
+		also 1. Lösung: $x = 0$, $y$ beliebig ($y$-Achse)\\
+		und 2. Lösung. $y = 0$,  $x$ beliebig ($x$-Achse)\\
+		
+		Außerdem $3 - 4x - 3y = 0$ und $2 - 2x - 3y = 0$ also $1 - 2x = 0$ also 3. Lösung: $x = \frac{1}{2}$ und $y = \frac{1}{3}$
+		
+		\[
+			\Hessian f(x, y) =
+			\begin{pmatrix}
+				6xy^2 - 12x^2y^2 - 6xy^3 & 6x^2y - 8x^3y - 9x^2y^2 \\
+				6x^2y - 8x^3y - 9x^2y^2 & 2x^3 - 2x^4 - 6x^3y
+			\end{pmatrix}
+			\Rightarrow
+		\]
+		
+		\[
+			\Hessian f(0, y) = 
+			\begin{pmatrix}
+				0 & 0\\
+				0 & 0
+			\end{pmatrix}
+			\Rightarrow \text{semidefinit}
+		\]
+		
+		\[
+			\Hessian f(x, 0) =
+			\begin{pmatrix}
+				0 & 0\\
+				0 & 2x^3 - 2x^4
+			\end{pmatrix}
+			\Rightarrow
+		\]
+		
+		In Abhängigkeit von $x$ positiv oder negativ semidefinit;
+		
+		positiv für $0 < x < 1$ und negativ für $x < 0$ oder $x > 1$
+		
+		\[
+			\Hessian f(\frac{1}{2}, \frac{1}{3}) = 
+			\begin{pmatrix}
+				-\frac{1}{9} & -\frac{1}{12} \\
+				-\frac{1}{12} & -\frac{1}{9}
+			\end{pmatrix}
+			\Rightarrow
+		\]
+		$\Hessian f(\frac{1}{2}, \frac{1}{3})$ ist negativ definit; also lokales Maximum
+		\item 
+		$
+		g(x,y) = x^k+(x+y)^2 \qquad (k=0,3,4)\\
+		\partder{g}{x}(x,y) = k\cdot x^{k-1} + 2(x + y)\\
+		\partder{g}{y}(x,y) = 2(x + y)
+		$
+		\\
+		
+		
+		\begin{samepage}
+			\textbf{Fall $k = 0$}\\
+			Wegen $g(x,y) = 1 + (x + y)^2 \ge 1$ und $g(x,y) = 1$ für $x + y = 0$\\
+			$\Rightarrow$ in allen Punkten der Gerade $x + y = 0$ bzw. $y = -x$ hat $g$ ein Minimum.
+		\end{samepage}
+	
+		\textbf{Fall $k = 3,4$}
+		
+		Aus der Bedingung $\nabla f = 0$ folgt:\\
+		
+		$2(x + y) = 0$ also $y = -x$ und\\
+		$k\cdot x^{k-1} + 2(x + y) = k\cdot x^{k-1} + 2(x - x) = k\cdot x^{k-1} = 0 \quad \Rightarrow \quad  x = 0 \text{ und } y = 0$
+		\[
+			\Hessian f(0,y) = 
+			\begin{pmatrix}
+				2 & 2\\
+				2 & 2
+			\end{pmatrix}
+			\Rightarrow \text{semidefinit}
+		\]
+		
+		\textbf{Fall $k = 3$}
+		
+		$g(x, -x) = x^3 \quad \Rightarrow \quad$ Wendepunkt\\
+		
+		\textbf{Fall $k = 4$}
+		
+		$g(x,y) = x^4 + (x + y)^2 > 0 \text{ für } (x,y) \ne (0,0)$ und\\
+		$g(x,y) = x^4 + (x + y)^2 = 0 \text{ für } (x,y) = 0 \Rightarrow$ lokales Minimum
+		
+		\section*{Aufgabe 2}
+		Gegen sie die Funktion $f: \mathbb{R}^2 \rightarrow \mathbb{R}, f(x,y) = (y-x^2)(y-3x^2).$
+		\begin{enumerate}[\textbf{\alph*)}]
+			\item Berechnen Sie $\nabla f$ und zeigen Sie: $\nabla f(x,y) = 0 \Leftrightarrow x = y = 0$.
+			\item Zeigen Sie, daß $(\Hessian f)(0)$ semidefinit ist und daß $f$ auf jeder Geraden durch~0 ein isoliertes Minimum hat.
+			\item Trotzdem hat $f$ in 0 kein lokales Extremum (zu zeigen!).
+		\end{enumerate}
+	
+		\subsection*{Lösung Aufgabe 2}
+		\begin{enumerate}[\textbf{\alph*)}]
+			\item 
+			$
+			f(x,y) = (y-x^2)(y-3x^2) = 3x^4 - 4x^2y + y^2\\
+			\partderf{x}(x,y) = 12x^3 - 8xy = 4x(3x^2 - 2y)\\
+			\partderf{y}(x,y) = -4x^2 + 2y = 2(y - 2x^2)
+			$
+			\\
+			
+			Die Bedingung $\nabla f = 0$ führt auf $y - 2x^2 = 0$ bzw. $y = 2x^2$\\
+			und auf $4x(3x^2 - 2y)  = 4x(3x^2 - 4x^2) = -4x^3 = 0$\\
+			$\Rightarrow \quad x = 0 \text{ und } y = 0$
+			
+			\item 
+			Zeigen Sie, daß $(\Hessian f)(0)$ semidefinit ist und daß $f$ auf jeder Geraden durch 0 ein isoliertes Minimum hat.
+			
+			\[
+				\Hessian f(x,y) = 
+				\begin{pmatrix}
+					36x^2 - 8y & -8x\\
+					-8x & 2
+				\end{pmatrix}
+				\Rightarrow
+			\]
+			
+			\[
+				\Hessian f(0,0) = 
+				\begin{pmatrix}
+					0 & 0\\
+					0 & 2
+				\end{pmatrix}
+				\quad \Rightarrow \text{positiv semidefinit}
+			\]
+			Betrachte $f$ auf der Ortskurve $y = \alpha \cdot x $ mit $\alpha \in \mathbb{R}$ (Alle Geraden durch den Nullpunkt)
+			
+			$
+			\Rightarrow \phi(x) = f(x, \alpha x) = (\alpha x-x^2)(\alpha x - 3x^2) = 3x^4 - 4\alpha x^3 + \alpha^2 x^2\\
+			\phi'(x) = 12x^3 - 8\alpha x^2 + 2\alpha^2x \quad \Rightarrow \phi^\prime(x) = 0\\
+			\phi''(x) = 36x^2 - 16\alpha x + 2\alpha^2 \quad \Rightarrow \phi''(0) > 0
+			$
+			
+			Also hat $f$ auf der Geraden $y = \alpha x $ in $(0,0)$ ein Minimum
+			
+			\item Trotzdem hat $f$ in 0 kein lokales Extremum (zu zeigen!).\\
+			Betrachte $f$ auf der Ortskurve $y = 2x^2$
+			\\
+			
+			$\Rightarrow f(x, 2x^2) = x^2(-x^2)$
+			\\
+			
+			und betrachte $f$ auf der Ortskurve $y = 0$ ($x$-Achse) 
+			\\
+			
+			$\Rightarrow f(x, 0) = 3x^4$
+			Also hat $f$ in $(0,0)$ kein lokales Extremum (Sattelpunkt)
+		\end{enumerate}
+	
+		\section*{Aufgabe 3}
+		Gegen sie die Funktion $f: \mathbb{R}^2 \rightarrow \mathbb{R}$,
+		
+		\[
+			f(x,y) = 
+			\begin{cases}
+				\tfrac{xy^3}{x^2 + y^6} &\text{ für } (x,y) \ne (0,0)\\
+				\quad 0 &\text{ für } (x,y) = (0,0)
+			\end{cases}
+		\]
+		
+		Zeigen Sie, daß im Punkt $(0,0)$ alle Richtungsableitungen existieren.
+		Ist $f$ in $(0,0)$ differenzierbar?
+		
+		(Hinweis: Diese Aufgabe ist nicht ganz einfach. Betrachten Sie einen Kreis um den Nullpunkt und lassen Sie den den Radius des Kreises gegen Null  streben).
+		
+		\subsection*{Lösung Aufgabe 3}
+		
+		Gegeben sei ein Kreis um den Nullpunkt $(0,0)$ in $\mathbb{R}^2$ durch $(u,v)\in \mathbb{R}^2$ mit $u^2~+~v^2~=~1$ \\
+		Betrachte nun $f$ auf dem Kreis um den Nullpunkt mit dem Kreisradius $\rightarrow 0$
+		
+		Allgemein gilt daher:
+		
+		\[
+			\lim\limits_{t\rightarrow 0} \frac{f(t\cdot u, t\cdot v) - f(0,0)}{t} = 
+			\lim\limits_{t \rightarrow 0}\frac{t\cdot u\cdot(t\cdot v)^3}{t\cdot \left[ (t\cdot u)^2 + (t\cdot v)^6\right]} = 
+			\lim\limits_{t \rightarrow 0} t\cdot \frac{u\cdot v^3}{u^2 + t^4\cdot v^6} = 0
+		\]
+		sowohl für $u \ne 0$ da $\left|\tfrac{u\cdot v^3}{u^2 + t^4\cdot v^6}\right| < \left|\tfrac{u\cdot v^3}{u^2}\right| < $ Konstante, als auch $u = 0$ (und $v = 1$)
+		
+		Daher existieren alle Richtungsableitungen in $(0,0)$ und haben den Wert 0.
+		
+		$f$ ist aber in $(0,0)$ nicht total differenzierbar:
+		
+		
+		wegen $f(y^3,y) = \frac{y^6}{y^6 + y^6} = \frac{1}{2}$ für $y \rightarrow 0$ und $f(0,0) = 0$\\
+		ist $f$ an der Stelle $(0,0)$ nicht stetig, also an der Stelle $(0,0)$ nicht total differenzierbar.
+	\end{enumerate}
+\end{document}
